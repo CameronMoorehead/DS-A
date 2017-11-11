@@ -35,4 +35,4 @@ dictionarySample.add("hell")
 dictionarySample.add("on")
 dictionarySample.add("now")
 
-console.log(can_segment_string("hellonow", dictionarySample))
+console.log(canSegmentString("hellonow", dictionarySample))
