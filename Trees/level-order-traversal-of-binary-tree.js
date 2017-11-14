@@ -13,16 +13,14 @@ const levelOrderTraversal = (root) => {
 
   while (queue.length !== 0) {
     let item = queue.shift()
-    console.log(temp.data + ",")
+    console.log(item.data + ",")
 
-    if (item.left !== null) {
+    if (item.left) {
       queue.push(item.left)
     }
-
-    if (item.right !== null) {
+    if (item.right) {
       queue.push(item.right)
     }
-
     if (!queue[0]) {
       queue.shift()
       if (queue.length !== 0) {
