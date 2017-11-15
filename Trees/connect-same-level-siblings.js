@@ -36,15 +36,3 @@ const connect = arr => {
   }
   arr[arr.length -1].next = null
 }
-
-const populatSiblingPointers = root => {
-  if (!root) {
-    return
-  }
-
-  root.next = null
-
-  while (root) {
-    root = connectNextLevel(root)
-  }
-}
