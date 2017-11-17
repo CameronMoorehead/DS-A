@@ -49,80 +49,23 @@ const split = (head, firstSecond) => {
 const mergeParts = (first, second) => {
   if (!first) {
     return second
-  } else if (!seconst mergeSort = head => {
-  if (!head || !head.next) {
-    return head
-  }
-
-  let first = null
-  let second = null
-  let firstSecond = { first, second }
-
-  split(head, firstSecond)
-
-  firstSecond.first = mergeSort(firstSecond.first)
-  firstSecond.second = mergeSort(firstSecond.second)
-
-  return mergeParts(firstSecond.first, firstSecond.second)
-}
-
-const split = (head, firstSecond) => {
-  if (!head) {
-    firstSecond.first = null
-    firstSecond.second = null
-    return;
-  }
-
-  if (!head.next) {
-    firstSecond.first = head
-    firstSecond.second = null
-  } else {
-    let slow = head
-    let fast = head.next
-    while (fast) {
-      fast = fast.next
-      if (fast) {
-        fast = fast.next
-        slow = slow.next
-      }
-    }
-
-    firstSecond.first = head
-    firstSecond.second = slow.next
-
-    slow.next = null
-  }
-}
-
-let test = {
-  data: 5,
-  next: {
-    data: 2,
-    next: {
-      data: 3,
-      next: null
-    }
-  }
-}
-
-console.log(mergeSort(test))
-cond) {
+  } else if (!second) {
     return first
   }
 
-  let mergedHead = null
-  if (first.element <= second.element) {
-    mergedHead = first
+  let newHead = null
+  if (first.data <= second.data) {
+    newHead = first
     first = first.next
   } else {
-    mergedHead = second
+    newHead = second
     second = second.next
   }
 
-  let mergedTail = mergedHead
+  let newCurrent = newHead
   while (first && second) {
     let temp = null
-    if (first.element <= second.element) {
+    if (first.data <= second.data) {
       temp = first
       first = first.next
     } else {
@@ -130,15 +73,15 @@ cond) {
       second = second.next
     }
 
-    mergedTail.next = temp
-    mergedTail = temp
+    newCurrent.next = temp
+    newCurrent = temp
   }
 
   if (first) {
-    mergedTail.next = first
+    newCurrent.next = first
   } else if (second) {
-    mergedTail.next = second
+    newCurrent.next = second
   }
 
-  return mergedHead
+  return newHead
 }
